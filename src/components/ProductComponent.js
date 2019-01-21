@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay,  CardTitle } from 'reactstrap';
 
-import ProductDetail from './ProductDetailComponent';
+
 
 
 class Product extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedProduct: null 
-                };
-                console.log( 'Product Constructor Component is Invoked');
-            }
+    // constructor(props) {
+    //     super(props);
+    // }
 
             componentDidMount(){
                 console.log( '3- Product Component componentDidMount is Invoked');
             }
-            onProductSelect(product) {
-                this.setState({selectedProduct: product})
-            }
+           
 
 
         // Page view
@@ -28,7 +22,7 @@ class Product extends Component {
                 const product = this.props.products.map( (product) => {
                     return (
                         <div key={product.id} className="col-12 col-md-5 mt-1">
-                            <Card key={ product.id } onClick={() => this.onProductSelect(product)}>
+                            <Card key={ product.id } onClick={() => this.props.onClick(product.id)}>
                                 <CardImg object src={ product.image } alt={product.name} />
                                 
                                 <CardImgOverlay>
@@ -48,7 +42,7 @@ class Product extends Component {
                         </div>
                         <div className="row">
                             
-                               <ProductDetail product={this.state.selectedProduct} />
+                               
                        
                         </div>
                     </div>

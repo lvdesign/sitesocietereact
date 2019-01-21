@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Card, CardImg,  CardText,CardBody,CardTitle } from 'reactstrap';
 
+
 class ProductDetail extends Component {
-
-//
-constructor(props){
-    super(props);
-}
-
+    componentDidMount(){
+        console.log( 'Detail - Product Component componentDidMount is Invoked');
+    }
+    componentDidUpdate(){
+        console.log( 'Detail - Product Component componentDidUpdate is Invoked');
+    }
 // page
 renderProduct(product) {
     if (product != null){
@@ -20,18 +21,15 @@ renderProduct(product) {
                   <CardText>{product.price}</CardText>
                 </CardBody>
             </Card>
-        );
-    
+        );    
     }else {
         return (
             <div>-- Product Error -- </div>
         )
-    }
-        
+    }        
 }
 
 renderComments(comments) {
-
     if(comments != null){
         return (
             <div>
@@ -40,14 +38,14 @@ renderComments(comments) {
                 { comments.map( comment => (
                     <li key={comment.id} className="mt-3" >
                     <p>{ comment.comment}</p>
-                    <p>-- {comment.author} , <span>{comment.date}</span></p>
+                    <p>-- {comment.author} , 
+                    {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
                     </li>
                 )
                 )}
                 </ul>
             </div>
-        );
-   
+        );   
     }else {
         return (
             <div>-- Comment Error -- </div>
@@ -55,17 +53,19 @@ renderComments(comments) {
     }
 }
 
-
-render() {
+render() {    
+        console.log( 'Detail - Product Component Render is Invoked');  
     
     if(this.props.product){
         return (
-            <div class="row">
-                <div className="col-12 col-md-5 m-1">
-                { this.renderProduct(this.props.product)}
-                </div>
-                <div className="col-12 col-md-5 m-1">
-                { this.renderComments(this.props.product.comments)}
+            <div className="container">
+                <div class="row">
+                    <div className="col-12 col-md-5 m-1">
+                    { this.renderProduct(this.props.product)}
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                    { this.renderComments(this.props.product.comments)}
+                    </div>
                 </div>
             </div>
         );
@@ -75,5 +75,5 @@ render() {
 }
 
 
-}
+} // end Class
 export default ProductDetail;
