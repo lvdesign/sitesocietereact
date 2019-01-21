@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay,  CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay,  CardTitle,  Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 // function when props constructor no needed and pros  and no setState
 // methode 1 :  (props) = {product, onClick} 
@@ -7,11 +8,13 @@ import { Card, CardImg, CardImgOverlay,  CardTitle } from 'reactstrap';
 function RenderProductItem({product, onClick}) {
     //
     return (
-        <Card key={ product.id } onClick={() => onClick(product.id)}>
+        <Card >
+            <Link to={`/product/${product.id}`}>
             <CardImg src={ product.image } alt={product.name} />
             <CardImgOverlay>
                 <CardTitle>{product.name}</CardTitle>
             </CardImgOverlay>
+            </Link>
         </Card>        
     );
 }
@@ -30,6 +33,16 @@ const Product = (props) =>{
 
         return (
             <div className="container">
+                <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Menu</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>Product</h3>
+                        <hr />
+                    </div>                
+                </div>
                 <div className="row">
                     { product }
                 </div>

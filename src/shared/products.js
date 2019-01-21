@@ -10,22 +10,7 @@ export const PRODUCTS =
     sku: 'ADI',
     summary:'Description Adipiscingipsum dolor sit amet descripte2',
     description:'Adipiscing ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper ante non vehicula eleifend. Phasellus ut feugiat tellus, vitae malesuada mi. Sed placerat ultrices enim, id fermentum ante tincidunt nec. Nulla ut mi bibendum, sodales ex ut, tempor odio. Mauris finibus elit eget ornare',
-    comments:[
-        {
-            id: 0,
-            rating: 5,
-            comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
-            date: "2012-10-16T17:57:28.556094Z"
-            },
-            {
-            id: 1,
-            rating: 4,
-            comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-            author: "Paul McVites",
-            date: "2014-09-05T17:57:28.556094Z"
-            },
-    ]
+    featured: true,
 },
     {
     id: 1,
@@ -37,22 +22,7 @@ export const PRODUCTS =
     sku: 'POT',
     summary:'Description Pot grey dolor sit amet',
     description:'Pot grey ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper ante non vehicula eleifend. Phasellus ut feugiat tellus, vitae malesuada mi. Sed placerat ultrices enim, id fermentum ante tincidunt nec. Nulla ut mi bibendum, sodales ex ut, tempor odio.',    
-    comments:[
-        {
-            id: 0,
-            rating: 5,
-            comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
-            date: "2012-10-16T17:57:28.556094Z"
-            },
-            {
-            id: 1,
-            rating: 4,
-            comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-            author: "Paul McVites",
-            date: "2014-09-05T17:57:28.556094Z"
-            },
-    ]
+    featured: false,
     },
     {
     id: 2,
@@ -64,22 +34,7 @@ export const PRODUCTS =
     sku: 'POTT',
     summary:'Description Pot de terre dolor sit amet',
     description:'Pot de terre ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper ante non vehicula eleifend. Phasellus ut feugiat tellus, vitae malesuada mi. Sed placerat ultrices enim, id fermentum ante tincidunt nec. Nulla ut mi bibendum, sodales ex ut, tempor odio.',
-    comments:[
-        {
-            id: 0,
-            rating: 5,
-            comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
-            date: "2012-10-16T17:57:28.556094Z"
-            },
-            {
-            id: 1,
-            rating: 4,
-            comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-            author: "Paul McVites",
-            date: "2014-09-05T17:57:28.556094Z"
-            },
-    ]
+    featured: false,
 },
     {
     id: 3,
@@ -91,22 +46,7 @@ export const PRODUCTS =
     sku: 'RAP',
     summary:'Description Raptor dolor sit amet',
     description:'Raptor ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper ante non vehicula eleifend. Phasellus ut feugiat tellus, vitae malesuada mi. Sed placerat ultrices enim, id fermentum ante tincidunt nec. Nulla ut mi bibendum, sodales ex ut, tempor odio. Mauris finibus elit eget ornare efficitur.',
-    comments:[
-        {
-            id: 0,
-            rating: 5,
-            comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
-            date: "2012-10-16T17:57:28.556094Z"
-            },
-            {
-            id: 1,
-            rating: 4,
-            comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-            author: "Paul McVites",
-            date: "2014-09-05T17:57:28.556094Z"
-            },
-    ]
+    featured: false,
 },
     {
     id: 4,
@@ -118,22 +58,7 @@ export const PRODUCTS =
     price:'29.99',
     summary:'Description Table dolor sit amet',
     description:'Table ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut feugiat tellus, vitae malesuada mi. Sed placerat ultrices enim, id fermentum ante tincidunt nec. Nulla ut mi bibendum, sodales ex ut, tempor odio. Mauris finibus elit eget ornare efficitur.',
-    comments:[
-        {
-            id: 0,
-            rating: 5,
-            comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
-            date: "2012-10-16T17:57:28.556094Z"
-            },
-            {
-            id: 1,
-            rating: 4,
-            comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-            author: "Paul McVites",
-            date: "2014-09-05T17:57:28.556094Z"
-            },
-    ]
+    featured: false,
 },
     {
     id: 5,
@@ -145,22 +70,7 @@ export const PRODUCTS =
     price:'45.99',
     summary:'Description Tabouret dolor sit amet',
     description:'Tabouret ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper ante non vehicula eleifend. Phasellus ut feugiat tellus, vitae malesuada mi. Sed placerat ultrices enim, id fermentum ante tincidunt nec. Nulla ut mi bibendum, sodales ex ut, tempor odio. Mauris finibus elit eget ornare efficitur.',
-    comments:[
-        {
-            id: 0,
-            rating: 5,
-            comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
-            date: "2012-10-16T17:57:28.556094Z"
-            },
-            {
-            id: 1,
-            rating: 4,
-            comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-            author: "Paul McVites",
-            date: "2014-09-05T17:57:28.556094Z"
-            },
-    ]
+    featured: false,
 },
     {
     id: 6,
@@ -172,21 +82,6 @@ export const PRODUCTS =
     price:'10.99',
     summary:'Description Longtmar dolor sit amet',
     description:'Longtmar ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper ante non vehicula eleifend. Phasellus ut feugiat tellus, vitae malesuada mi. Sed placerat ultrices enim, id fermentum ante tincidunt nec. Nulla ut mi bibendum, sodales ex ut, tempor odio. Mauris finibus elit eget ornare efficitur.',
-    comments:[
-        {
-            id: 0,
-            rating: 5,
-            comment: "Imagine all the eatables, living in conFusion!",
-            author: "John Lemon",
-            date: "2012-10-16T17:57:28.556094Z"
-            },
-            {
-            id: 1,
-            rating: 4,
-            comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
-            author: "Paul McVites",
-            date: "2014-09-05T17:57:28.556094Z"
-            },
-    ]
+    featured: false,
 }
 ]

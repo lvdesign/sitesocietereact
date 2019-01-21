@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardImg,  CardText,CardBody,CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 // Use function when no constructor needed
 // page props only 
@@ -7,7 +8,7 @@ function RenderProduct( {product} ) {
     if (product != null){
         return (
             <Card>
-                <CardImg top src={product.image} alt={product.name} />
+                <CardImg src={product.image} alt={product.name}/>
                 <CardBody>
                   <CardTitle>{product.name}</CardTitle>
                   <CardText>{product.description}</CardText>
@@ -54,12 +55,22 @@ const ProductDetail = (props)=> {
     if(props.product != null ){
         return (
             <div className="container">
+            <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/product">Product</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.product.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{props.product.name}</h3>
+                        <hr />
+                    </div>                
+                </div>
                 <div className="row">
                     <div className="col-12 col-md-5 m-1">
-                    <RenderProduct product ={props.product} />
+                        <RenderProduct product={props.product} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                    <RenderComments comments={props.product.comments} />
+                        <RenderComments comments={props.comments} />
                     </div>
                 </div>
             </div>
