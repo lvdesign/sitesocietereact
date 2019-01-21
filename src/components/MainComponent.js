@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 
-import ProductDetail from './ProductDetailComponent';
+import Home from './HomeComponent'
 import Product from './ProductComponent';
 import { PRODUCTS } from '../shared/products';
+
+import { Switch, Route, Redirect} from 'react-router-dom'
 
 
 class Main extends Component {
@@ -12,27 +15,31 @@ class Main extends Component {
     super(props);
     this.state = {
       products: PRODUCTS,
-      selectedProduct: null
+      //selectedProduct: null
     };
   }
 
-  onProductSelect(productId) {
-    this.setState({selectedProduct: productId})
-}
+//   onProductSelect(productId) {
+//     this.setState({selectedProduct: productId})
+// }
 
   render() {
+
+    const HomePage = () => {
+      return(
+          <Home />
+      );
+    }
+
     return (
       <div className="App">
-         <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Site Société</NavbarBrand>
-          </div>
-        </Navbar>
-        <Product products={this.state.products} 
-        onClick={ (productId ) => this.onProductSelect(productId) }/>
-        <ProductDetail product={ this.state.products.filter( 
-            (product) => product.id === this.state.selectedProduct )[0]} 
-            />
+        <Header />
+       <Switch>
+          <Route path="/home" component={ HomePage } />
+          <Route exact path="/product" component={() => <Product products={this.state.products} />} />
+          <Redirect to="/home" />
+       </Switch>
+        <Footer />
       </div>
     );
   }

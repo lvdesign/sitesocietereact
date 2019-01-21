@@ -1,16 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, CardImg,  CardText,CardBody,CardTitle } from 'reactstrap';
 
-
-class ProductDetail extends Component {
-    componentDidMount(){
-        console.log( 'Detail - Product Component componentDidMount is Invoked');
-    }
-    componentDidUpdate(){
-        console.log( 'Detail - Product Component componentDidUpdate is Invoked');
-    }
-// page
-renderProduct(product) {
+// Use function when no constructor needed
+// page props only 
+function RenderProduct( {product} ) {
     if (product != null){
         return (
             <Card>
@@ -29,7 +22,7 @@ renderProduct(product) {
     }        
 }
 
-renderComments(comments) {
+function RenderComments({ comments }) {
     if(comments != null){
         return (
             <div>
@@ -53,18 +46,20 @@ renderComments(comments) {
     }
 }
 
-render() {    
-        console.log( 'Detail - Product Component Render is Invoked');  
+// creation de la view
+const ProductDetail = (props)=> {    
+     
+    console.log( 'Detail - Product Component Render is Invoked');  
     
-    if(this.props.product){
+    if(props.product != null ){
         return (
             <div className="container">
-                <div class="row">
+                <div className="row">
                     <div className="col-12 col-md-5 m-1">
-                    { this.renderProduct(this.props.product)}
+                    <RenderProduct product ={props.product} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                    { this.renderComments(this.props.product.comments)}
+                    <RenderComments comments={props.product.comments} />
                     </div>
                 </div>
             </div>
@@ -75,5 +70,5 @@ render() {
 }
 
 
-} // end Class
+// end Class
 export default ProductDetail;
