@@ -23,10 +23,6 @@ class Main extends Component {
     };
   }
 
-//   onProductSelect(productId) {
-//     this.setState({selectedProduct: productId})
-// }
-
   render() {
 
     const HomePage = () => {

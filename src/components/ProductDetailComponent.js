@@ -7,14 +7,16 @@ import { Link } from 'react-router-dom';
 function RenderProduct( {product} ) {
     if (product != null){
         return (
-            <Card>
-                <CardImg src={product.image} alt={product.name}/>
-                <CardBody>
-                  <CardTitle>{product.name}</CardTitle>
-                  <CardText>{product.description}</CardText>
-                  <CardText>{product.price}</CardText>
-                </CardBody>
-            </Card>
+            <div className="col-12 col-md-5 m-1">
+                <Card>
+                    <CardImg top width="100%" src={product.image} alt={product.name}/>
+                    <CardBody>
+                    <CardTitle>{product.name}</CardTitle>
+                    <CardText>{product.description}</CardText>
+                    <CardText>{product.price}</CardText>
+                    </CardBody>
+                </Card>
+            </div>
         );    
     }else {
         return (
@@ -26,7 +28,7 @@ function RenderProduct( {product} ) {
 function RenderComments({ comments }) {
     if(comments != null){
         return (
-            <div>
+            <div className="col-12 col-md-5 m-1">           
                 <h4>Comments</h4>
                 <ul className="list-unstyled">
                 { comments.map( comment => (
@@ -37,7 +39,7 @@ function RenderComments({ comments }) {
                     </li>
                 )
                 )}
-                </ul>
+                </ul>           
             </div>
         );   
     }else {
@@ -65,13 +67,9 @@ const ProductDetail = (props)=> {
                         <hr />
                     </div>                
                 </div>
-                <div className="row">
-                    <div className="col-12 col-md-5 m-1">
-                        <RenderProduct product={props.product} />
-                    </div>
-                    <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments} />
-                    </div>
+                <div className="row">                   
+                        <RenderProduct product={props.product} /> 
+                        <RenderComments comments={props.comments} />                   
                 </div>
             </div>
         );
