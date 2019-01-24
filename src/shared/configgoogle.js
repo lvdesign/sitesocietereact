@@ -1,0 +1,1 @@
+export const GG = 'AIzaSyD9aQETU7fgFdiTaePwg4pvgVcPJvk7zAY';
