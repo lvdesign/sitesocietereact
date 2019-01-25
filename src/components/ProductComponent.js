@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardImgOverlay,  CardTitle,  Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading} from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 // function when props constructor no needed and pros  and no setState
 // methode 1 :  (props) = {product, onClick} 
@@ -11,7 +12,7 @@ function RenderProductItem({product, onClick}) {
     return (
         <Card >
             <Link to={`/product/${product.id}`}>
-            <CardImg src={ product.image } alt={product.name} />
+            <CardImg src={baseUrl + product.image} alt={product.name} />
             <CardImgOverlay>
                 <CardTitle>{product.name}</CardTitle>
             </CardImgOverlay>

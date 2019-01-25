@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading} from './LoadingComponent';
-
+import { baseUrl } from '../shared/baseUrl';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -116,7 +116,7 @@ function RenderProduct( {product} ) {
         return (
             <div className="col-12 col-md-5 m-1">
                 <Card>
-                    <CardImg top width="100%" src={product.image} alt={product.name}/>
+                    <CardImg top width="100%" src={baseUrl + product.image} alt={product.name}/>
                     <CardBody>
                     <CardTitle>{product.name}</CardTitle>
                     <CardText>{product.description}</CardText>

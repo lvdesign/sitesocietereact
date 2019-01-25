@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink, } from 'react-router-dom'
-
+import { baseUrl } from '../shared/baseUrl';
 
 class Header extends Component {
 
@@ -47,7 +47,7 @@ class Header extends Component {
                 <div className="container">
                 <NavbarToggler onClick={this.toggleNav} />
                     <NavbarBrand className="mr-auto" href="/#">
-                    <img src="assets/img/picto/pictoF.svg" height="30" alt="site societe" />
+                    <img src={baseUrl+ 'assets/img/picto/pictoF.svg'} height="30" alt="site societe" />
                     Societe
                     </NavbarBrand>
                     <Collapse isOpen={this.state.isNavOpen} navbar>

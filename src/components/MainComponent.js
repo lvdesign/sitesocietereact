@@ -10,7 +10,7 @@ import ProductDetail from './ProductDetailComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
-import { addComment, fetchProducts, productsLoading } from '../redux/ActionCreators';
+import { addComment, fetchProducts, fetchComments } from '../redux/ActionCreators';
 
 
 const mapStateToProps = state => {
@@ -24,7 +24,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => ({
   addComment: ( productId, rating, author, comment) => dispatch( addComment( productId, rating, author, comment) ),
   fetchProducts: () => { dispatch(fetchProducts() )},
-  resetFeedbackForm: () => { dispatch(actions.reset('feedback'))}
+  resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
+  fetchComments: () => { dispatch(fetchComments() )},
+
 })
 
 class Main extends Component {
@@ -33,6 +35,7 @@ class Main extends Component {
   // active fetch
   componentDidMount(){
     this.props.fetchProducts();
+    this.props.fetchComments();
   }
 
 
@@ -41,9 +44,8 @@ class Main extends Component {
     const HomePage = () => {
       return(
           <Home product={ this.props.products.products.filter((product) => product.featured)[0]}
-          productsLoading = {this.props.products.isLoading}
-          productsErrMess = {this.props.products.errMess}
-         
+            productsLoading = {this.props.products.isLoading}
+            productsErrMess = {this.props.products.errMess}
           />
       );
     }
@@ -54,8 +56,10 @@ class Main extends Component {
             product={this.props.products.products.filter((product) => product.id === parseInt(match.params.productId,10))[0]} 
             isLoading = {this.props.products.isLoading}
             errMess = {this.props.products.errMess}            
-            comments={this.props.comments.filter((comment) => comment.productId === parseInt(match.params.productId,10))} 
+            comments={this.props.comments.comments.filter((comment) => comment.productId === parseInt(match.params.productId,10))} 
+            commentsErrMess = {this.props.comments.errMess}  
             addComment ={this.props.addComment}
+
           />
           );
     };
