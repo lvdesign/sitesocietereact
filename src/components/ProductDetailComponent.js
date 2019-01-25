@@ -3,6 +3,8 @@ import { Button, Row, Col, Label, Card, CardImg, CardText, CardBody, CardTitle, 
 import { Link } from 'react-router-dom';
 
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Loading} from './LoadingComponent';
+
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -28,9 +30,11 @@ class CommentForm extends Component{
           isOpen: !this.state.isOpen
         });
       }
-      handleCommentSubmit(values){
+      handleCommentSubmit(values){ // send to comments
+        this.toggleCommentModal();
+        this.props.addComment(this.props.productId, values.rating, values.author, values.comment);
         console.log("Current state is : " + JSON.stringify(values));
-        alert("Current state is : " + JSON.stringify(values));
+        //alert("Current state is : " + JSON.stringify(values));
       }
 
       render(){
@@ -128,7 +132,7 @@ function RenderProduct( {product} ) {
     }        
 }
 
-function RenderComments({ comments }) {
+function RenderComments({ comments, addComment, productId }) {
     if(comments != null){
         return (
             <div className="col-12 col-md-5 m-1">           
@@ -143,7 +147,7 @@ function RenderComments({ comments }) {
                 )
                 )}
                 </ul>
-                <CommentForm />        
+                <CommentForm productId={ productId} addComment={addComment} />        
             </div>
         );   
     }else {
@@ -157,8 +161,25 @@ function RenderComments({ comments }) {
 const ProductDetail = (props)=> {    
      
     console.log( 'Detail - Product Component Render is Invoked');  
-    
-    if(props.product != null ){
+    if(props.isLoading) {
+        return (
+        <div className="container">
+            <div className="row">
+                <Loading />
+            </div>
+        </div>
+        );
+    }
+    else if (props.errMess){
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{ props.errMess}</h4>
+                </div>
+            </div>
+            );
+    }
+    else if(props.product != null ){
         return (
             <div className="container">
             <div className="row">
@@ -173,7 +194,10 @@ const ProductDetail = (props)=> {
                 </div>
                 <div className="row">                   
                         <RenderProduct product={props.product} /> 
-                        <RenderComments comments={props.comments} />                   
+                        <RenderComments comments={props.comments} 
+                            addComment ={props.addComment}
+                            productId={props.product.id}
+                        />                   
                 </div>
             </div>
         );

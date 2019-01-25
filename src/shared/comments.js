@@ -10,7 +10,7 @@ export const COMMENTS =
     },
     {
         id: 1,
-        v: 0,
+        productId: 0,
         rating: 4,
         comment: "Sends anyone to heaven, I wish I could get my mother-in-law to eat it!",
         author: "Paul McVites",

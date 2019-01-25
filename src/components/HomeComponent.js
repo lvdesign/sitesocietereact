@@ -1,18 +1,31 @@
 import React from 'react'
 import { Card, CardImg, CardText, CardBody, CardSubtitle, CardTitle } from 'reactstrap';
+import{ Loading} from './LoadingComponent';
 
+function RenderCard({item, isLoading, errMess}){
 
-function RenderCard({item}){
-    return(
-        <Card>
-            <CardImg src={item.image} alt={item.name} />
-            <CardBody>
-                <CardTitle>{item.name}</CardTitle>
-                {item.summary ? <CardSubtitle>{item.summary} </CardSubtitle> : null}
-            </CardBody>
-            <CardText>{item.description}</CardText>
-        </Card>
-    )
+    if(isLoading){
+        return(
+            <Loading />
+        );
+    }
+    else if (errMess){
+        return(
+            <h4>{ item.errMess} </h4>
+        );
+    }
+    else {
+        return(
+            <Card>
+                <CardImg src={item.image} alt={item.name} />
+                <CardBody>
+                    <CardTitle>{item.name}</CardTitle>
+                    {item.summary ? <CardSubtitle>{item.summary} </CardSubtitle> : null}
+                </CardBody>
+                <CardText>{item.description}</CardText>
+            </Card>
+        )
+    }
 }
 
 
@@ -127,7 +140,11 @@ function Home(props){
             {/*  Product  */}
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
-                <RenderCard item={props.product} />
+                <RenderCard 
+                    item={props.product}
+                    isLoading={props.productsLoading} 
+                    errMess = {props.productsErrMess }
+                    />
                 </div>
             </div>
 
