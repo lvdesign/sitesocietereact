@@ -32,7 +32,7 @@ class CommentForm extends Component{
       }
       handleCommentSubmit(values){ // send to comments
         this.toggleCommentModal();
-        this.props.addComment(this.props.productId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.productId, values.rating, values.author, values.comment);
         console.log("Current state is : " + JSON.stringify(values));
         //alert("Current state is : " + JSON.stringify(values));
       }
@@ -132,7 +132,7 @@ function RenderProduct( {product} ) {
     }        
 }
 
-function RenderComments({ comments, addComment, productId }) {
+function RenderComments({ comments, postComment, productId }) {
     if(comments != null){
         return (
             <div className="col-12 col-md-5 m-1">           
@@ -147,7 +147,7 @@ function RenderComments({ comments, addComment, productId }) {
                 )
                 )}
                 </ul>
-                <CommentForm productId={ productId} addComment={addComment} />        
+                <CommentForm productId={ productId} postComment={postComment} />        
             </div>
         );   
     }else {
@@ -195,7 +195,7 @@ const ProductDetail = (props)=> {
                 <div className="row">                   
                         <RenderProduct product={props.product} /> 
                         <RenderComments comments={props.comments} 
-                            addComment ={props.addComment}
+                            postComment ={props.postComment}
                             productId={props.product.id}
                         />                   
                 </div>

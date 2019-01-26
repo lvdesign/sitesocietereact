@@ -10,8 +10,8 @@ import ProductDetail from './ProductDetailComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
-import { addComment, fetchProducts, fetchComments } from '../redux/ActionCreators';
-
+import { postComment, fetchProducts, fetchComments } from '../redux/ActionCreators';
+// car addComment deja ds la boucle
 
 const mapStateToProps = state => {
     return {
@@ -22,7 +22,7 @@ const mapStateToProps = state => {
 
 // action
 const mapDispatchToProps = (dispatch) => ({
-  addComment: ( productId, rating, author, comment) => dispatch( addComment( productId, rating, author, comment) ),
+  postComment: ( productId, rating, author, comment) => dispatch(postComment( productId, rating, author, comment) ),
   fetchProducts: () => { dispatch(fetchProducts() )},
   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
   fetchComments: () => { dispatch(fetchComments() )},
@@ -58,8 +58,8 @@ class Main extends Component {
             errMess = {this.props.products.errMess}            
             comments={this.props.comments.comments.filter((comment) => comment.productId === parseInt(match.params.productId,10))} 
             commentsErrMess = {this.props.comments.errMess}  
-            addComment ={this.props.addComment}
-
+            //addComment ={this.props.addComment}
+            postComment ={this.props.postComment}
           />
           );
     };
