@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, Button, Row, Col, Label } from 'reactstrap';
 import {  withGoogleMap, GoogleMap} from 'react-google-maps';
-import { Control, Form, Errors, actions } from 'react-redux-form';
+import { Control,  Form, Errors } from 'react-redux-form';
 
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -25,8 +25,10 @@ class Contact extends Component{
     }
 
     handleSubmit(values) {
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+
+        this.props.postFeedback(values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message);
+        console.log("Thank you for your feedback :" + JSON.stringify(values));
+        //alert('Current State is: ' + JSON.stringify(values));
         this.props.resetFeedbackForm();
     }
     

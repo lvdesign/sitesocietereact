@@ -7,10 +7,12 @@ import Contact from './ContactComponent';
 import Product from './ProductComponent';
 import ProductDetail from './ProductDetailComponent';
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
-import { postComment, fetchProducts, fetchComments } from '../redux/ActionCreators';
+import { postComment, fetchProducts, fetchComments, postFeedback } from '../redux/ActionCreators';
 // car addComment deja ds la boucle
 
 const mapStateToProps = state => {
@@ -26,6 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchProducts: () => { dispatch(fetchProducts() )},
   resetFeedbackForm: () => { dispatch(actions.reset('feedback'))},
   fetchComments: () => { dispatch(fetchComments() )},
+  postFeedback: ( firstname, lastname, telnum, email, agree, contactType, message) => dispatch( postFeedback(firstname,lastname,telnum,email,agree,contactType,message)),
 
 })
 
@@ -64,18 +67,22 @@ class Main extends Component {
           );
     };
 
-
+    
 
     return (
       <div className="App">
         <Header />
-       <Switch>
-          <Route path="/home" component={ HomePage } />
-          <Route exact path="/product" component={() => <Product products={this.props.products} />} />
-          <Route path='/product/:productId' component={ProductWithId} />
-          <Route exact path="/contactus" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-          <Redirect to="/home" />
-       </Switch>
+            <TransitionGroup>
+              <CSSTransition key={ this.props.location.key} classNames="page" timeout={300} >
+                  <Switch>
+                      <Route path="/home" component={ HomePage } />
+                      <Route exact path="/product" component={() => <Product products={this.props.products} />} />
+                      <Route path='/product/:productId' component={ProductWithId} />
+                      <Route exact path="/contactus" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback}/>} />
+                      <Redirect to="/home" />
+                  </Switch>
+              </CSSTransition>
+            </TransitionGroup>
         <Footer />
       </div>
     );

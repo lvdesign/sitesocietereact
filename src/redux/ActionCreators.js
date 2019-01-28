@@ -1,10 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-//import { PRODUCTS } from '../shared/products';
 import { baseUrl } from '../shared/baseUrl';
-
-
-
-
 
 // Products 
 export const fetchProducts = () => (dispatch) => {
@@ -41,6 +36,55 @@ export const addProducts = (products) => ({
     type: ActionTypes.ADD_PRODUCTS,
     payload: products
 });
+
+export const postProduct = (name, image, category, slug, price,sku,summary,description, featured) => (dispatch) => {
+    const newProduct= {
+        name: name, 
+        image:image, 
+        category:category, 
+        slug: slug, 
+        price:price,
+        sku:sku,
+        summary:summary,
+        description:description, 
+        featured: featured
+    }
+    //newComment.date = new Date().toISOString();
+        return fetch(baseUrl + 'products', {
+            method: 'POST',
+            body: JSON.stringify(newProduct),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin'
+        })
+        .then( response => { 
+            if(response.ok){
+                return response;
+            }else{ // error server
+                var error = new Error(' Error '+ response.status + ' : ' + response.statusText);
+                error.response =response;
+                throw error;
+            }
+        },
+        error => { 
+            var errmess = new Error(error.message);
+            throw errmess
+        })
+        .then(response => response.json())
+        .then(response => dispatch(addProduct(response)))
+            .catch(error => {console.log('Post ADD Product ', error.message) ;
+            alert('Your product could not be posted\nError: '+error.message); });
+
+}
+
+export const addProduct = (product) => ({
+    type: ActionTypes.ADD_PRODUCT,
+    payload: product
+});
+
+
+
 
 
 // Comments
@@ -117,6 +161,56 @@ export const postComment = (productId, rating, author, comment) => (dispatch) =>
             .catch(error => {console.log('Post Comments ', error.message) ;
             alert('Your comment could not be posted\nError: '+error.message); });
 };
+
+
+
+// feedback
+
+export const postFeedback = (firstname,lastname, telnum, email,agree,contactType, message) => (dispatch) => {
+    
+    const newFeedback = {
+        firstname: firstname,
+        lastname: lastname,
+        telnum: telnum,
+        email: email,
+        agree: agree,
+        contactType: contactType,
+        message: message
+    };
+
+        return fetch(baseUrl + 'feedback', {
+            method: 'POST',
+            body: JSON.stringify(newFeedback),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin'
+        })
+        .then( response => { 
+            if(response.ok){
+                return response;
+            }else{ // error server
+                var error = new Error(' Error '+ response.status + ' : ' + response.statusText);
+                error.response =response;
+                throw error;
+            }
+        },
+        error => { 
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then(response => alert('Thanks for feedback ::' + JSON.stringify(response)))
+            .then(response => dispatch(addFeedback(response)))
+                .catch(error => {console.log('Feedback ', error.message) ;
+                    alert('Your feedback could not be posted\nError: '+error.message); });
+};
+
+export const addFeedback = (feedback) => ({
+    type: ActionTypes.ADD_FEEDBACK, 
+    payload: feedback
+});
+
 
 // Comment
 // export const addComment = (productId, rating, author, comment) => ({
