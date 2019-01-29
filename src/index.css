@@ -15,12 +15,7 @@
   margin:0px auto;
   padding: 20px 0px 20px 0px;
 }
-.jumbotron {
-  padding:70px 30px 70px 30px;
-  margin:0px auto;
-  background: #9575CD ;
-  color:floralwhite;
-}
+
 
 address{
   font-size:80%;
@@ -28,18 +23,25 @@ address{
   color:#0f0f0f;
 }
 
-.navbar-dark {
-  background-color: #512DA8;
+.navbar-toggler{
+  background: green;
+  font-size: .5em;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+ /*typo*/
+ html {
+  /* border-box box model allows us to add padding and border to our elements without increasing their size */
+  box-sizing: border-box;
+  /* A system font stack so things load nice and quick! */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 code {
@@ -48,3 +50,82 @@ code {
 }
 
 
+  /* COLOR  LINKS */
+
+  a {
+    color: green !important;
+  }
+  
+  a .visited{
+    color: grey !important;
+  }
+
+
+
+  .fondFooter{
+    background: url("http://localhost:3001/assets/img/fonds/fondFooter.svg") repeat center center fixed;
+  }
+
+/* link server pour Background Image */
+header.masthead {
+  position: relative;
+  background-color: #343a40;
+  background: url('http://localhost:3001/assets/img/roman-kraft-208004-unsplash.png' ) no-repeat center center;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  background-color: #212529;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+header.masthead h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+  header.masthead h1 {
+    font-size: 3rem;
+  }
+}
+
+footer{ 
+  padding-top: .5em;
+  color:white;
+}
+
+
+
+/* Animations */
+.page-enter {
+  opacity: 0.01;
+  transform: translateX(-100%);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 300ms ease-in;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.page-exit-active {
+  opacity: 0.01;
+  transform: translateX(100%);
+  transition: all 300ms ease-out;
+}

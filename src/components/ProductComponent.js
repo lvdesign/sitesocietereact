@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay,  CardTitle,  Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Col,Card, CardImg, CardImgOverlay,  CardTitle,  Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading} from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
@@ -10,14 +10,16 @@ import { baseUrl } from '../shared/baseUrl';
 function RenderProductItem({product, onClick}) {
     //
     return (
-        <Card >
+        <Col xs={12} >
+        <Card className="mt-4">
             <Link to={`/product/${product.id}`}>
-            <CardImg src={baseUrl + product.image} alt={product.name} />
-            <CardImgOverlay>
-                <CardTitle>{product.name}</CardTitle>
-            </CardImgOverlay>
+                <CardImg src={baseUrl + product.image} alt={product.name} />
+                <CardImgOverlay>
+                    <CardTitle>{product.name}</CardTitle>
+                </CardImgOverlay>
             </Link>
-        </Card>        
+        </Card>  
+        </Col>
     );
 }
 // methode 2
@@ -59,11 +61,11 @@ const Product = (props) =>{
                             <BreadcrumbItem active>Menu</BreadcrumbItem>
                         </Breadcrumb>
                         <div className="col-12">
-                            <h3>Product</h3>
+                            <h3>Produits</h3>
                             <hr />
                         </div>                
                     </div>
-                    <div className="row">
+                    <div className="row ">
                         { product }
                     </div>
                 </div>

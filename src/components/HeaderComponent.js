@@ -43,45 +43,38 @@ class Header extends Component {
     render() {
         return(
             <React.Fragment>
-             <Navbar dark expand="md">
-                <div className="container">
+             <Navbar dark expand="md" className="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+                <div className="container ">
                 <NavbarToggler onClick={this.toggleNav} />
-                    <NavbarBrand className="mr-auto" href="/#">
-                    <img src={baseUrl+ 'assets/img/picto/pictoF.svg'} height="30" alt="site societe" />
-                    Societe
+                    <NavbarBrand className="mr-2" href="/#">
+                    <img src={baseUrl+ 'assets/img/picto/pictoF.svg'} height="35" alt="site societe" />
+                    SiteSociété
                     </NavbarBrand>
+
                     <Collapse isOpen={this.state.isNavOpen} navbar>
                         <Nav navbar>
                             <NavItem>
-                                <NavLink className="nav-link" to="/home">
-                                <span className="fa fa-home fa-lg"></span>
-                                Home</NavLink>
+                                <NavLink className="nav-link" to="/product">                                
+                                Produits</NavLink>
                             </NavItem>
-
                             <NavItem>
-                                <NavLink className="nav-link" to="/aboutus">
-                                <span className="fa fa-info fa-lg"></span>
-                                About Us</NavLink>
+                                <NavLink className="nav-link" to="/contactus">                                
+                                Actualités</NavLink>
                             </NavItem>
-
                             <NavItem>
-                                <NavLink className="nav-link" to="/product">
-                                <span className="fa fa-list fa-lg"></span>
-                                Product</NavLink>
+                                <NavLink className="nav-link" to="/contactus">                                
+                                Contact</NavLink>
                             </NavItem>
-
-                            <NavItem>
-                                <NavLink className="nav-link" to="/contactus">
-                                <span className="fa fa-address fa-lg"></span>
-                                Contact Us</NavLink>
-                            </NavItem>
-
-
                         </Nav>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
+                                <Button  onClick={this.toggleModal}>
+                                <i className="fa fa-shopping-basket" aria-hidden="true"></i> Card
+                                </Button>
+                            </NavItem>
+                            <NavItem>
                                 <Button outline onClick={this.toggleModal}>
-                                <span className="fa fa-sign-in fa-lg"></span> Login
+                                <span className="fa fa-user-circle" aria-hidden="true"></span> Login
                                 </Button>
                             </NavItem>
                         </Nav>

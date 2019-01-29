@@ -39,17 +39,32 @@ function RenderCard({item, isLoading, errMess}){
 
 
 function Home(props){
-    return (    
-        
+    return (
+
+        <React.Fragment>
+        <header className="masthead" > 
+            <div className="overlay"></div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xl-9 mx-auto">
+                            <h1 className="mb-5">Build a landing page for your business or project and generate more leads!</h1>
+                        </div>
+                    </div>
+                </div>
+            
+        </header>   
+
+      
         <div className="container">
 
-            {/*  Image Fond --   */}
-            <div className="row ">
+            {/*  Image Fond --   
+            <div className="row">
                 <div className="col-12 col-md m-1">
                         <h4>Image fond</h4>
+                        <img src={baseUrl+ 'assets/img/roman-kraft-208004-unsplash.png'} alt="site société vue magasin " />
                 </div>
             </div>
-
+*/}
 
            {/*  Best feature  */}
             <div className="row text-center" id="best-features">
@@ -167,7 +182,7 @@ function Home(props){
            
         </div>
             
-   
+        </React.Fragment>
     )
 }
 
